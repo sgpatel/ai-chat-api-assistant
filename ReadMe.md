@@ -134,3 +134,12 @@ Respond to Parameter Request:curl -X POST http://localhost:8000/api/v1/chat/mess
 }'
 Backend Tests (pytest):Navigate to the api_assistant_framework directory.Activate the virtual environment.Run tests (if tests/ directory and test files exist):python -m pytest tests/ -v -s
 Future Enhancements / TODOsRobust Parameter Handling: Improve APIClient to use parsed spec details (location) to correctly place parameters in path, query, headers, or body.Advanced NLU/Intent Mapping: Replace basic UI mapping with a more flexible NLU approach (LLM or simpler model) to understand diverse user requests.Complex Input Components: Implement more sophisticated UI components for arrays of objects or deeply nested objects (e.g., dynamic form builders).LLM Response Summarization: Integrate llm_integrations/summarizer.py into ResponseHandler.LLM Parameter Parsing: Integrate llm_integrations/response_parser.py into DialogFlowEngine to handle natural language parameter values.Workflow/Chaining: Add logic to DialogFlowEngine to handle multi-step API call sequences.WebSocket Support: Replace frontend polling with WebSockets for real-time updates.Authentication Management: Add secure storage and handling for multiple target API credentials.
+
+
+![image](https://github.com/user-attachments/assets/3b460c12-a93f-4eab-93ce-79206d6b18b6)
+
+![image](https://github.com/user-attachments/assets/c432bb94-5323-47e8-979e-4132927438bd)
+
+![image](https://github.com/user-attachments/assets/4daa8249-461d-4402-b22d-9c1e6aa9abc9)
+
+
