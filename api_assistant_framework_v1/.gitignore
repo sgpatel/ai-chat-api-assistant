@@ -1,0 +1,15 @@
+.env
+*.db
+*.sqlite3
+*.log
+*.pyc
+__pycache__/
+*.egg-info
+*.egg
+*.whl
+*.tar.gz
+*.zip
+*.tar
+*.gz
+*.rar
+

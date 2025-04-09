@@ -1,0 +1,17 @@
+# requirements.txt for api_assistant_framework backend
+
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0 # For loading .env into Pydantic Settings model
+PyYAML>=6.0
+python-dotenv>=1.0.0
+httpx>=0.25.0
+
+# --- Added for Database State Persistence ---
+sqlalchemy[asyncio]>=2.0
+aiosqlite>=0.19.0 # Async driver for SQLite
+
+# Optional: Add for more robust OpenAPI validation
+openapi-spec-validator>=0.5.0
+openai>=1.10.0,<2.0.0

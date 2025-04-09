@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Generic Task API
+  version: 1.0.0
+  description: A sample API demonstrating various parameter types for the chat assistant framework.
+servers:
+  - url: https://api.example.com/v1 # Base URL (used by APIClient, currently mocked)
+paths:
+  /generic-task:
+    post:
+      summary: Creates a generic task
+      description: Endpoint to test various input types via chat UI.
+      operationId: createGenericTask
+      requestBody:
+        description: Data needed to create the task
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - task_name
+                - priority
+                - due_date
+                - status
+                - assignees
+                - send_notification
+              properties:
+                task_name:
+                  type: string
+                  description: The primary name or title of the task.
+                  example: "Prepare Q3 Report"
+                description: # Optional field
+                  type: string
+                  description: Optional longer description of the task.
+                priority: # Required number field
+                  type: integer
+                  description: Priority level (e.g., 1-5).
+                  example: 3
+                due_date: # Required date field
+                  type: string
+                  format: date
+                  description: The date the task is due (YYYY-MM-DD).
+                  example: "2025-12-31"
+                start_datetime: # Optional date-time field
+                  type: string
+                  format: date-time
+                  description: Optional specific start date and time.
+                  example: "2025-11-01T09:00:00Z"
+                status: # Required enum field
+                  type: string
+                  description: The current status of the task.
+                  enum:
+                    - Pending
+                    - In Progress
+                    - Blocked
+                    - Completed
+                  example: "Pending"
+                send_notification: # Required boolean field
+                  type: boolean
+                  description: Whether to send a notification upon creation.
+                  default: true
+                assignees: # Required array field
+                  type: array
+                  description: List of user IDs assigned to the task.
+                  items:
+                    type: string # Assuming user IDs are strings
+                  example: ["user-123", "user-456"]
+                metadata: # Optional object field
+                  type: object
+                  description: Optional key-value pairs for extra data.
+                  properties:
+                    project_id:
+                      type: string
+                    cost_center:
+                      type: string
+                  additionalProperties: true # Allow other arbitrary keys
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task_id:
+                    type: string
+                    format: uuid
+                  message:
+                    type: string
+        '400':
+          description: Invalid input provided
+          content:
+            application/json:
+              schema:
+                 type: object
+                 properties:
+                   detail:
+                     type: string
+                     example: "Validation Error: Field 'priority' must be between 1 and 5."
+
